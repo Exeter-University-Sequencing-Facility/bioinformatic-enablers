@@ -1,6 +1,6 @@
 # Basic options
-title: Workshop Name
-short_name: workshop-name
+title: Bioinformatic Enablers
+short_name: bioinformatic-enablers
 developers: [A name]
 description: One sentence description of workshop.
 n_sessions: 3
