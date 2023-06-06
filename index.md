@@ -5,13 +5,17 @@ title: Course Information
 
 ## Overview
 
-You will be keen to start executing your bioinformatic programs and pipelines, and maybe even writing programs and scripts. However, there are a number of tools and techniques which will enable you to work efficiently and reliably in the computational environment that you have. This course can help at the start of your bioinformatic analysis, but can also be used as an ongoing reference.
+You will be keen to start executing your bioinformatic programs and pipelines, and maybe even writing programs and scripts. 
+However, there will a number of steps before you can utilise the computational environment effectively and efficiently.  
+This course is intended to be a roadmap to becoming adept managing you resources and executing your bioinformatics efficiently.
 
 ## Course objectives
 
 This course will covering the following:
 
-- How to connect to 
+- How to connect to a remote computer.
+- Understand and use the Operating System and Shell.
+- Editing Files.
 
 ## Pre-requisite knowledge
 
