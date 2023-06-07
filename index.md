@@ -19,7 +19,7 @@ This course will covering the following:
 
 ## Pre-requisite knowledge
 
-There are no special pre-requisites for this, rather the items in this course will be refered to but subsequenc courses.
+There are no special pre-requisites for this, rather the items in this course will be refered to but subsequent courses.
 
 ## Workshop format
 
