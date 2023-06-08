@@ -12,17 +12,17 @@
 <meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="How to connect to a remote computer" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Learning Objectives" />
-<meta property="og:description" content="Learning Objectives" />
+<meta name="description" content="Remote Computing" />
+<meta property="og:description" content="Remote Computing" />
 <link rel="canonical" href="http://localhost:4000/02_remote_computing/" />
 <meta property="og:url" content="http://localhost:4000/02_remote_computing/" />
 <meta property="og:site_name" content="Bioinformatic Enablers" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2023-06-07T16:40:00+01:00" />
+<meta property="article:published_time" content="2023-06-08T12:45:00+01:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="How to connect to a remote computer" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-06-07T16:40:00+01:00","datePublished":"2023-06-07T16:40:00+01:00","description":"Learning Objectives","headline":"How to connect to a remote computer","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/02_remote_computing/"},"url":"http://localhost:4000/02_remote_computing/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-06-08T12:45:00+01:00","datePublished":"2023-06-08T12:45:00+01:00","description":"Remote Computing","headline":"How to connect to a remote computer","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/02_remote_computing/"},"url":"http://localhost:4000/02_remote_computing/"}</script>
 <!-- End Jekyll SEO tag -->
 
     <head>
@@ -93,11 +93,7 @@
    
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h2 id="learning-objectives">Learning Objectives</h2>
-
-<p>At the end of this lesson you will be understand different ways to connect to a remote computer.</p>
-
-<h2 id="remote-computing">Remote Computing</h2>
+        <h2 id="remote-computing">Remote Computing</h2>
 
 <p>Bioinformatic analysis can require huge amounts of computational resource. It is often impractical to use acquire enough resource to install on or under your desk!</p>
 
@@ -107,10 +103,12 @@
 
 <h2 id="command-line-interface">Command line interface</h2>
 
-<p>Much bioinformatic analysis is performed from the command line on a Linux server. But first we need to use a program to connect to the remote server.<br />
-Normally we will connect using ssh (Secure Shell) On a Mac you can use this from the terminal directly, from a Windows based machine you need to install a program.</p>
+<p>Much bioinformatic analysis is performed from the command line on a Linux server. But first we need to use a program to connect to the remote server.  This is often refered to as the ‘host’ and to connect you will need to know its name or IP address.
+e.g. for ISCA the hostname is <code class="language-plaintext highlighter-rouge">login.isca.ex.ac.uk</code></p>
 
-<p>Common options are:</p>
+<p>We will connect using ssh (Secure SHell) On a Mac you can use this from the terminal directly, from a Windows based machine you need to install a program.</p>
+
+<h2 id="windows-applicaton-style-options-are">Windows Applicaton style options are</h2>
 
 <h3 id="mobaxterm">MobaXterm</h3>
 
@@ -124,9 +122,47 @@ Normally we will connect using ssh (Secure Shell) On a Mac you can use this from
 
 <p><a href="https://www.putty.org/">PuTTy</a> used to be the go to option and is still very popular. I can neither recommend nor ignore it!</p>
 
+<h2 id="local-command-line-options">Local command line options</h2>
+
+<h3 id="windows-">Windows *</h3>
+<p>Computers with Windows operating systems do not automatically have a Unix Shell program
+installed.</p>
+
+<p>In this lesson, we encourage you to use an emulator included in [Git for Windows][install_shell],
+which gives you access to both Bash shell commands and Git. 
+Once installed, you can open a terminal by running the program Git Bash from the Windows start
+menu.</p>
+
+<p><strong>For advanced users</strong>, as an alternative to Git for Windows, you may wish to [Install the Windows Subsystem for Linux][wsl] which gives access to a Bash shell command-line tool in Windows 10.
+Please note that commands in the Windows Subsystem for Linux (WSL) may differ slightly
+from those shown in the lesson or presented in the workshop.</p>
+
+<h3 id="macos-">MacOS *</h3>
+<p>For a Mac computer running macOS Mojave or earlier releases, the default Unix Shell is Bash.
+For a Mac computer running macOS Catalina or later releases, the default Unix Shell is Zsh.
+Your default shell is available via the Terminal program within your Utilities folder.</p>
+
+<p>To open Terminal, try one or both of the following:</p>
+<ul>
+  <li>In Finder, select the Go menu, then select Utilities.
+Locate Terminal in the Utilities folder and open it.</li>
+  <li>Use the Mac ‘Spotlight’ computer search function.
+Search for: <code class="language-plaintext highlighter-rouge">Terminal</code> and press <kbd>Return</kbd>.</li>
+</ul>
+
+<p>To check if your machine is set up to use something other than Bash,
+type <code class="language-plaintext highlighter-rouge">echo $SHELL</code> in your terminal window.</p>
+
+<p>If your machine is set up to use something other than Bash,
+you can run it by opening a terminal and typing <code class="language-plaintext highlighter-rouge">bash</code>.</p>
+
+<p>Here are instruction on <a href="http://www.macworld.co.uk/feature/mac-software/how-use-terminal-on-mac-3608274/">how to Use Terminal on a Mac</a></p>
+
 <h2 id="example">Example</h2>
 
 <p>See this page from the RSE workshop with more details on <a href="https://uniexeterrse.github.io/intro-to-isca/03_connection/index.html">Connecting to ISCA</a></p>
+
+<p>* material sourced from RSE pages https://uniexeterrse.github.io/intro-unix-shell/setup.html</p>
 
       </section>
     </div>

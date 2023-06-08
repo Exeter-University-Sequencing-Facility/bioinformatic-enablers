@@ -5,9 +5,9 @@ title: Course Information
 
 ## Overview
 
-You'll likely be eager to begin running your bioinformatic programs and pipelines, and perhaps even developing your own programs and scripts. However, there will be several challenges to tackle before you can effectively and efficiently utilize the computational environment. This course (or reference) aims to serve as a guide, leading you towards proficiency in code management, data handling, resource utilization, and the efficient execution of bioinformatics tasks.
+You'll likely be eager to begin running your bioinformatic programs and pipelines, and perhaps even developing your own programs and scripts. However, there will be several challenges to tackle before you can effectively and efficiently utilize the computational environment. This course (or reference) aims to serve as a guide or roadmap, supporting you in code management, data handling, resource utilization, and the efficient execution of bioinformatics tasks.
 
-Frequently, this course will incorporate material from various sources, including the excellent University of Exeter Research Software Engineering Group's resources (available at https://uniexeterrse.github.io/workshop-homepage).
+This course is not intended to add original material, but rather incorporates material from various sources, including the excellent University of Exeter Research Software Engineering Group's resources (available at https://uniexeterrse.github.io/workshop-homepage).
 
 
 ## Objectives
