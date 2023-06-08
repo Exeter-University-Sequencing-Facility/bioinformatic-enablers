@@ -8,21 +8,21 @@
     <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=">
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Wrap up | Bioinformatic Enablers</title>
+<title>How to connect to a remote computer | Bioinformatic Enablers</title>
 <meta name="generator" content="Jekyll v4.3.2" />
-<meta property="og:title" content="Wrap up" />
+<meta property="og:title" content="How to connect to a remote computer" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Acknowledgements" />
-<meta property="og:description" content="Acknowledgements" />
-<link rel="canonical" href="http://localhost:4000/xx_wrapup/" />
-<meta property="og:url" content="http://localhost:4000/xx_wrapup/" />
+<meta name="description" content="Learning Objectives" />
+<meta property="og:description" content="Learning Objectives" />
+<link rel="canonical" href="http://localhost:4000/02_remote_computing/" />
+<meta property="og:url" content="http://localhost:4000/02_remote_computing/" />
 <meta property="og:site_name" content="Bioinformatic Enablers" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2023-06-07T12:11:02+01:00" />
+<meta property="article:published_time" content="2023-06-07T16:40:00+01:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Wrap up" />
+<meta property="twitter:title" content="How to connect to a remote computer" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-06-07T12:11:02+01:00","datePublished":"2023-06-07T12:11:02+01:00","description":"Acknowledgements","headline":"Wrap up","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/xx_wrapup/"},"url":"http://localhost:4000/xx_wrapup/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-06-07T16:40:00+01:00","datePublished":"2023-06-07T16:40:00+01:00","description":"Learning Objectives","headline":"How to connect to a remote computer","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/02_remote_computing/"},"url":"http://localhost:4000/02_remote_computing/"}</script>
 <!-- End Jekyll SEO tag -->
 
     <head>
@@ -34,7 +34,7 @@
 
   <title>
     
-      Wrap up &middot; Bioinformatic Enablers
+      How to connect to a remote computer &middot; Bioinformatic Enablers
     
   </title>
 
@@ -63,13 +63,16 @@
   
 
   
+     
+	<a class="prev" href="/01_intro/index.html">&laquo; Previous episode</a>
+    
+     
+      
+	<a class="next" href="/03_unix_and_shell/index.html">&raquo; Next episode</a>
+    
+  
   
 
-  
-     
-	<a class="prev" href="/02_lesson1/index.html">&laquo; Previous episode</a>
-    
-    
   
   
 
@@ -81,7 +84,7 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <h1 id="project_title">Wrap up</h1>
+          <h1 id="project_title">How to connect to a remote computer</h1>
         </header>
     </div>
 
@@ -90,21 +93,40 @@
    
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h2 id="acknowledgements">Acknowledgements</h2>
+        <h2 id="learning-objectives">Learning Objectives</h2>
 
-<p>This workshop, and the others in the series, were put together by the Research Software Engineering Group supported by a team of volunteers. It has been adapted/influenced by XXX. This is as part of an ongoing initiative to provide training for staff and students to expand their skill sets and position themselves to confidently perform the informatics elements of their research projects in an efficient and reproducible way.</p>
+<p>At the end of this lesson you will be understand different ways to connect to a remote computer.</p>
 
-<p>We are grateful to the workshop leaders and helpers for supporting the delivery.</p>
+<h2 id="remote-computing">Remote Computing</h2>
 
-<p>If you have benefited in any way from this course and want to support its long term sustainability then please take the time to complete our feedback survey, recommend it to your colleagues, and enthuse about it to your senior leadership team.The programme and workshops are under constant evolution, and we are grateful for your feedback which is a core component of this process.</p>
+<p>Bioinformatic analysis can require huge amounts of computational resource. It is often impractical to use acquire enough resource to install on or under your desk!</p>
 
-<h2 id="follow-up">Follow up</h2>
+<p>For this reason, we usually connect to a larger server (or cluster of servers) in the University’s data-centre, or possibly in the cloud.</p>
 
-<p>Course notes and resources are available all year round for you to revisit and share as you need.</p>
+<p>Data and applications are stored and processed on remote servers. Users can access these resources and perform tasks remotely using various devices, such as computers, smartphones, or tablets, via an internet connection.</p>
 
-<p>You will be invited to be part of network of participants where you can reach out for follow up support. We encourage peer-to-peer support so please feel free to answer questions posted by other users.</p>
+<h2 id="command-line-interface">Command line interface</h2>
 
-<p>We will also distribute the collaborative notes document.</p>
+<p>Much bioinformatic analysis is performed from the command line on a Linux server. But first we need to use a program to connect to the remote server.<br />
+Normally we will connect using ssh (Secure Shell) On a Mac you can use this from the terminal directly, from a Windows based machine you need to install a program.</p>
+
+<p>Common options are:</p>
+
+<h3 id="mobaxterm">MobaXterm</h3>
+
+<p><a href="https://mobaxterm.mobatek.net">MobaXterm</a> has a free portable version.</p>
+
+<h3 id="termius">Termius</h3>
+
+<p><a href="https://termius.com/">Termius</a> is available as a free application on Microsoft Store</p>
+
+<h3 id="putty">PuTTy</h3>
+
+<p><a href="https://www.putty.org/">PuTTy</a> used to be the go to option and is still very popular. I can neither recommend nor ignore it!</p>
+
+<h2 id="example">Example</h2>
+
+<p>See this page from the RSE workshop with more details on <a href="https://uniexeterrse.github.io/intro-to-isca/03_connection/index.html">Connecting to ISCA</a></p>
 
       </section>
     </div>
@@ -121,13 +143,16 @@
   
 
   
+     
+	<a class="prev" href="/01_intro/index.html">&laquo; Previous episode</a>
+    
+     
+      
+	<a class="next" href="/03_unix_and_shell/index.html">&raquo; Next episode</a>
+    
+  
   
 
-  
-     
-	<a class="prev" href="/02_lesson1/index.html">&laquo; Previous episode</a>
-    
-    
   
   
 
