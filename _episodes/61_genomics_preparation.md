@@ -29,7 +29,7 @@ cd ${USER}
 ```
 
 
-## Download and Prepare the reference
+## Download the reference
 
 this is not strictly necessary as the reference is very small, but as good practice start an interactive session.
 ```
@@ -37,6 +37,7 @@ srun  --export=ALL -D . -p bioseq  --time=12:00:00 -A Research_Project-BioTraini
 ```
 ![isca-interactive](../images/isca-interactive.png)
 
+You will notice the prompt on your computer change from 'login' to 'comp'
 
 
 First we need the reference genome of the species we are going to be dealing with in this case 'Burkholderia pseudomallei K96243'.
@@ -56,4 +57,43 @@ Extract the reference.
 ```
 unzip GCF_000011545.1.zip
 ```
+
+![download with curl](../images/gen-prep-unzip.png)
+
+The main files we are interested in are the .fna file which is the fasta reference and the gff file which is the genome feature file. Use `less` to have a look at these files. 
+
+## Prepare the reference.
+
+You now have the contents of the reference, but some of the programs we use requires additional files to support access them efficiently.  
+So we will build these all up front.  
+
+
+We are going to use 'bioconda environments' to access bioinformatic tools - thousands of bioinformatic tools are packages and can be downloaded and run using bioconda recipies.
+It is well worth you investing some time understanding how this works. (but but now!). [BIOCONDA](https://bioconda.github.io/index.html)  
+
+
+Here we will use a program called [BWA](https://github.com/lh3/bwa)
+```
+. "/gpfs/ts0/shared/software/Miniconda3/4.9.2/etc/profile.d/conda.sh"
+conda activate /lustre/projects/Research_Project-BioTraining/ecr2023/bioconda-envs/bwa
+```
+
+```
+cd /lustre/projects/Research_Project-BioTraining/ecr2023/${USER}
+cd ncbi_dataset/data/GCF_000011545.1
+```
+
+```
+bwa index GCF_000011545.1_ASM1154v1_genomic.fna
+samtools dict GCF_000011545.1_ASM1154v1_genomic.fna > GCF_000011545.1_ASM1154v1_genomic.dict
+samtools faidx GCF_000011545.1_ASM1154v1_genomic.fna
+ls -latr
+```
+
+![indexes](../images/gen-prep-indexes.png)
+
+
+
+
+
 
