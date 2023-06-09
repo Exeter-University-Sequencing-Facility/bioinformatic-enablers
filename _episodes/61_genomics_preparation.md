@@ -15,6 +15,7 @@ If you run anything that requires more resource, there are two options.
 - submit a batch job
 - start an interactive session.
 
+This will allow you to run more computationally intensive commands on 'compute nodes' without affecting others.
 
 ## Create a folder to contain your work:
 
@@ -29,6 +30,14 @@ cd ${USER}
 
 
 ## Download and Prepare the reference
+
+this is not strictly necessary as the reference is very small, but as good practice start an interactive session.
+```
+srun  --export=ALL -D . -p bioseq  --time=12:00:00 -A Research_Project-BioTraining --nodes=1  --ntasks-per-node=1 --pty bash -i
+```
+![isca-interactive](../images/isca-interactive.png)
+
+
 
 First we need the reference genome of the species we are going to be dealing with in this case 'Burkholderia pseudomallei K96243'.
 
