@@ -1,7 +1,7 @@
 ---
 layout: page
 title: RNA-seq Functional Analysis
-order: 8
+order: 104
 session: 1
 length: 10
 toc: true
