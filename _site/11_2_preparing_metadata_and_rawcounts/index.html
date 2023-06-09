@@ -8,21 +8,21 @@
     <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=">
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Understand and use the Operating System and Shell | Bioinformatic Enablers</title>
+<title>RNA-seq Data preparation | Bioinformatic Enablers</title>
 <meta name="generator" content="Jekyll v4.3.2" />
-<meta property="og:title" content="Understand and use the Operating System and Shell" />
+<meta property="og:title" content="RNA-seq Data preparation" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Unix and Bash" />
-<meta property="og:description" content="Unix and Bash" />
-<link rel="canonical" href="http://bioseqws01.ex.ac.uk:4000/03_unix_and_shell/" />
-<meta property="og:url" content="http://bioseqws01.ex.ac.uk:4000/03_unix_and_shell/" />
+<meta name="description" content="Set of tools and techniques to enable efficient bioinformatic analysis." />
+<meta property="og:description" content="Set of tools and techniques to enable efficient bioinformatic analysis." />
+<link rel="canonical" href="http://bioseqws01.ex.ac.uk:4000/11_2_preparing_metadata_and_rawcounts/" />
+<meta property="og:url" content="http://bioseqws01.ex.ac.uk:4000/11_2_preparing_metadata_and_rawcounts/" />
 <meta property="og:site_name" content="Bioinformatic Enablers" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2023-06-09T10:08:15+01:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Understand and use the Operating System and Shell" />
+<meta property="twitter:title" content="RNA-seq Data preparation" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-06-09T10:08:15+01:00","datePublished":"2023-06-09T10:08:15+01:00","description":"Unix and Bash","headline":"Understand and use the Operating System and Shell","mainEntityOfPage":{"@type":"WebPage","@id":"http://bioseqws01.ex.ac.uk:4000/03_unix_and_shell/"},"url":"http://bioseqws01.ex.ac.uk:4000/03_unix_and_shell/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-06-09T10:08:15+01:00","datePublished":"2023-06-09T10:08:15+01:00","description":"Set of tools and techniques to enable efficient bioinformatic analysis.","headline":"RNA-seq Data preparation","mainEntityOfPage":{"@type":"WebPage","@id":"http://bioseqws01.ex.ac.uk:4000/11_2_preparing_metadata_and_rawcounts/"},"url":"http://bioseqws01.ex.ac.uk:4000/11_2_preparing_metadata_and_rawcounts/"}</script>
 <!-- End Jekyll SEO tag -->
 
     <head>
@@ -34,7 +34,7 @@
 
   <title>
     
-      Understand and use the Operating System and Shell &middot; Bioinformatic Enablers
+      RNA-seq Data preparation &middot; Bioinformatic Enablers
     
   </title>
 
@@ -69,22 +69,25 @@
   
 
   
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
      
-	<a class="prev" href="/11_5_GO_Enrichment/index.html">&laquo; Previous episode</a>
+	<a class="prev" href="/11_1_RNA_seq_experimental_set_up/index.html">&laquo; Previous episode</a>
     
+     
+      
+	<a class="next" href="/11_3_Deseq2_pre-filtering/index.html">&raquo; Next episode</a>
     
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
   
   
 
@@ -96,7 +99,7 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <h1 id="project_title">Understand and use the Operating System and Shell</h1>
+          <h1 id="project_title">RNA-seq Data preparation</h1>
         </header>
     </div>
 
@@ -105,15 +108,7 @@
    
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h2 id="unix-and-bash">Unix and Bash</h2>
-
-<ul>
-  <li>Unix (or Linux) is an operating system most</li>
-</ul>
-
-<p>This is covered thoroughly and excellently covered by the Exeter RSE course.</p>
-
-<p>https://uniexeterrse.github.io/intro-unix-shell/</p>
+        
 
       </section>
     </div>
@@ -136,22 +131,25 @@
   
 
   
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
      
-	<a class="prev" href="/11_5_GO_Enrichment/index.html">&laquo; Previous episode</a>
+	<a class="prev" href="/11_1_RNA_seq_experimental_set_up/index.html">&laquo; Previous episode</a>
     
+     
+      
+	<a class="next" href="/11_3_Deseq2_pre-filtering/index.html">&raquo; Next episode</a>
     
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
   
   
 
@@ -160,7 +158,9 @@
         <p class="copyright">The material on this page is © University of Exeter.</p>
         
         <p class="copyright">Material other than code snippets and example
-          programs is licensed under <a href ="https://creativecommons.org/licenses/by/4.0/">Creative Commons BY 4.0</a>.
+          programs is licensed under <a href ="https://creativecommons.org/licenses/by/4.0/">Creative Commons BY 4.0</a>. 
+          It has been adapted from <a href=""></a>
+          which is ©  and licensed under <a href =></a>.
         </p>
          
         <p class="copyright">The code snippets and example programs on this page

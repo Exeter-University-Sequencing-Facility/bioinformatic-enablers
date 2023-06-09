@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>RNA-seq Introduction | Bioinformatic Enablers</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="RNA-seq Introduction" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Welcome to the RNA-seq portion of this course By the end of this session you should be able to: Manipulate tables into suitable formats for Deseq2. Perform differential gene expression with Deseq2. Generate some visual plots. Perform Gene Set enrichment Analysis with Clusterprofiler4. But before we start with any of the fun stuff it is important to understand the experimental design especially if you didn’t perform the experiment ourselves. The paper for the dataset we will be working is paper The primary objective of the study was to identify key genes associated with colorectal cancer agressiveness. The RNA-seq has 54 samples from 3 tissues:primary colorectal, liver metastases and normal colon belonging to 18 patients. In this practical we are going to look at the differentially expressed genes between the primary colorectal tissue and the normal colon tissues." />
+<meta property="og:description" content="Welcome to the RNA-seq portion of this course By the end of this session you should be able to: Manipulate tables into suitable formats for Deseq2. Perform differential gene expression with Deseq2. Generate some visual plots. Perform Gene Set enrichment Analysis with Clusterprofiler4. But before we start with any of the fun stuff it is important to understand the experimental design especially if you didn’t perform the experiment ourselves. The paper for the dataset we will be working is paper The primary objective of the study was to identify key genes associated with colorectal cancer agressiveness. The RNA-seq has 54 samples from 3 tissues:primary colorectal, liver metastases and normal colon belonging to 18 patients. In this practical we are going to look at the differentially expressed genes between the primary colorectal tissue and the normal colon tissues." />
+<link rel="canonical" href="http://bioseqws01.ex.ac.uk:4000/11_1_RNA_seq_experimental_set_up/" />
+<meta property="og:url" content="http://bioseqws01.ex.ac.uk:4000/11_1_RNA_seq_experimental_set_up/" />
+<meta property="og:site_name" content="Bioinformatic Enablers" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-06-09T10:08:15+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="RNA-seq Introduction" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-06-09T10:08:15+01:00","datePublished":"2023-06-09T10:08:15+01:00","description":"Welcome to the RNA-seq portion of this course By the end of this session you should be able to: Manipulate tables into suitable formats for Deseq2. Perform differential gene expression with Deseq2. Generate some visual plots. Perform Gene Set enrichment Analysis with Clusterprofiler4. But before we start with any of the fun stuff it is important to understand the experimental design especially if you didn’t perform the experiment ourselves. The paper for the dataset we will be working is paper The primary objective of the study was to identify key genes associated with colorectal cancer agressiveness. The RNA-seq has 54 samples from 3 tissues:primary colorectal, liver metastases and normal colon belonging to 18 patients. In this practical we are going to look at the differentially expressed genes between the primary colorectal tissue and the normal colon tissues.","headline":"RNA-seq Introduction","mainEntityOfPage":{"@type":"WebPage","@id":"http://bioseqws01.ex.ac.uk:4000/11_1_RNA_seq_experimental_set_up/"},"url":"http://bioseqws01.ex.ac.uk:4000/11_1_RNA_seq_experimental_set_up/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      RNA-seq Introduction &middot; Bioinformatic Enablers
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="/public/css/custom.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <!-- Icons -->
+<!--   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="public/apple-touch-icon-precomposed.png"> -->
+  <!--link rel="shortcut icon" href="/public/favicon.ico"-->
+
+  <!-- RSS -->
+  <!--link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml"-->
+</head>
+
+    
+
+<div class="topnav">
+  <a class="active" href="https://uniexeterrse.github.io/UoE-workshop-template/">Home</a>
+  
+  
+  
+
+  
+  
+
+  
+     
+	<a class="prev" href="/02_remote_computing/index.html">&laquo; Previous episode</a>
+    
+     
+      
+	<a class="next" href="/11_2_preparing_metadata_and_rawcounts/index.html">&raquo; Next episode</a>
+    
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+</div> 
+
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <h1 id="project_title">RNA-seq Introduction</h1>
+        </header>
+    </div>
+
+   
+    <!-- MAIN CONTENT -->
+   
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2 id="welcome-to-the-rna-seq-portion-of-this-course">Welcome to the RNA-seq portion of this course</h2>
+
+<p>By the end of this session you should be able to:</p>
+<ul>
+  <li>Manipulate tables into suitable formats for Deseq2.</li>
+  <li>Perform differential gene expression with Deseq2.</li>
+  <li>Generate some visual plots.</li>
+  <li>Perform Gene Set enrichment Analysis with Clusterprofiler4.</li>
+</ul>
+
+<p>But before we start with any of the fun stuff it is important to understand the experimental design especially if you didn’t perform the experiment ourselves. The paper for the dataset we will be working is <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5528589/" title="paper">paper</a></p>
+
+<p>The primary objective of the study was to identify key genes associated with colorectal cancer agressiveness. The RNA-seq has 54 samples from 3 tissues:primary colorectal, liver metastases and normal colon belonging to 18 patients. In this practical we are going to look at the differentially expressed genes between the primary colorectal tissue and the normal colon tissues.</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+
+<div class="topnav">
+  <a class="active" href="https://uniexeterrse.github.io/UoE-workshop-template/">Home</a>
+  
+  
+  
+
+  
+  
+
+  
+     
+	<a class="prev" href="/02_remote_computing/index.html">&laquo; Previous episode</a>
+    
+     
+      
+	<a class="next" href="/11_2_preparing_metadata_and_rawcounts/index.html">&raquo; Next episode</a>
+    
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+</div> 
+
+        <p class="copyright">The material on this page is © University of Exeter.</p>
+        
+        <p class="copyright">Material other than code snippets and example
+          programs is licensed under <a href ="https://creativecommons.org/licenses/by/4.0/">Creative Commons BY 4.0</a>. 
+          It has been adapted from <a href=""></a>
+          which is ©  and licensed under <a href =></a>.
+        </p>
+         
+        <p class="copyright">The code snippets and example programs on this page
+          are MIT licensed, according to the licence notice found in this website's
+          <a href="https://github.com/UniExeterRSE/intro-to-r/blob/main/LICENSE" target="_blank" rel="external noreferrer">code repository</a>.
+        </p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+</html>
