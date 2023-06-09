@@ -7,10 +7,6 @@ length: 20
 toc: true
 ---
 
-## Learning Objectives
-
-At the end of this lesson you will be understand different ways to connect to a remote computer.
-
 ## Remote Computing
 
 Bioinformatic analysis can require huge amounts of computational resource. It is often impractical to use acquire enough resource to install on or under your desk!
@@ -21,10 +17,12 @@ Data and applications are stored and processed on remote servers. Users can acce
 
 ## Command line interface
 
-Much bioinformatic analysis is performed from the command line on a Linux server. But first we need to use a program to connect to the remote server.  
-Normally we will connect using ssh (Secure Shell) On a Mac you can use this from the terminal directly, from a Windows based machine you need to install a program.
+Much bioinformatic analysis is performed from the command line on a Linux server. But first we need to use a program to connect to the remote server.  This is often refered to as the 'host' and to connect you will need to know its name or IP address.
+e.g. for ISCA the hostname is `login.isca.ex.ac.uk`
 
-Common options are:
+We will connect using ssh (Secure SHell) On a Mac you can use this from the terminal directly, from a Windows based machine you need to install a program.
+
+## Windows Applicaton style options are
 
 ### MobaXterm
 
@@ -39,6 +37,47 @@ Common options are:
 [PuTTy](https://www.putty.org/) used to be the go to option and is still very popular. I can neither recommend nor ignore it!
 
 
+
+## Local command line options
+
+### Windows \*
+Computers with Windows operating systems do not automatically have a Unix Shell program
+installed.
+
+In this lesson, we encourage you to use an emulator included in [Git for Windows][install_shell],
+which gives you access to both Bash shell commands and Git. 
+Once installed, you can open a terminal by running the program Git Bash from the Windows start
+menu.
+
+**For advanced users**, as an alternative to Git for Windows, you may wish to [Install the Windows Subsystem for Linux][wsl] which gives access to a Bash shell command-line tool in Windows 10.
+Please note that commands in the Windows Subsystem for Linux (WSL) may differ slightly
+from those shown in the lesson or presented in the workshop.
+
+### MacOS \*
+For a Mac computer running macOS Mojave or earlier releases, the default Unix Shell is Bash.
+For a Mac computer running macOS Catalina or later releases, the default Unix Shell is Zsh.
+Your default shell is available via the Terminal program within your Utilities folder.
+
+To open Terminal, try one or both of the following:
+* In Finder, select the Go menu, then select Utilities.
+  Locate Terminal in the Utilities folder and open it.
+* Use the Mac 'Spotlight' computer search function.
+  Search for: `Terminal` and press <kbd>Return</kbd>.
+
+To check if your machine is set up to use something other than Bash,
+type `echo $SHELL` in your terminal window.
+
+If your machine is set up to use something other than Bash,
+you can run it by opening a terminal and typing `bash`.
+
+Here are instruction on [how to Use Terminal on a Mac](http://www.macworld.co.uk/feature/mac-software/how-use-terminal-on-mac-3608274/)
+
+
+
+
 ## Example
 
 See this page from the RSE workshop with more details on [Connecting to ISCA](https://uniexeterrse.github.io/intro-to-isca/03_connection/index.html)
+
+
+\* material sourced from RSE pages https://uniexeterrse.github.io/intro-unix-shell/setup.html
