@@ -38,6 +38,8 @@ srun  --export=ALL -D . -p bioseq  --time=12:00:00 -A Research_Project-BioTraini
 ![isca-interactive](../images/isca-interactive.png)
 
 You will notice the prompt on your computer change from 'login' to 'comp'
+The parition `-p bioseq` and the account are specific for this course `-A Research_Project-BioTraining` if you come to use ISCA for your own analysis you will need to use your own account and tone of the public partitions.  
+See the [EXeter RSE Introduction to ISCA](https://uniexeterrse.github.io/intro-to-isca/) for more details.
 
 
 First we need the reference genome of the species we are going to be dealing with in this case 'Burkholderia pseudomallei K96243'.
