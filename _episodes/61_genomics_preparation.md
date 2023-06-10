@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Genomics Preparation
-order: 61
+order: 62
 session: 2
 length: 10
 toc: true
