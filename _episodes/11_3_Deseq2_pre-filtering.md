@@ -7,7 +7,7 @@ length: 10
 toc: true
 adapted: true
 ---
-#Pre-filtering
+# Pre-filtering
 
 In certain cases it might be a good idea to pre-filter your data. As there will be a few genes with very low read counts across the board in all groups.
 
@@ -18,12 +18,15 @@ We will begin by getting a summary of the rawCounts. Here we will be able to obs
 ```
 summary(rawCounts)
 ```
-By looking at the summary of the rawCounts we can choose 5 as a create number 
+By looking at the summary of the rawCounts we can choose 5 as a create number. We can choose how many genes would be left if we filtered by 5 counts, by using the ```dim``` command. This command checks the dimension of matrix or table.
 ```
 dim(deseq2Data[rowSums(counts(deseq2Data)) > 5, ])
+```
+We can observe that 5 isn't that aggresive of a prunning so so we apply the filtering to the deseq2Data object we previously created.
+```
 deseq2Data <- deseq2Data[rowSums(counts(deseq2Data)) > 5, ]
 ```
-
+Now we run DESeq this should take a minute to perform but go ahead and use the ```head``` command to see the new object. 
 ```
 deseq2Data <- DESeq(deseq2Data)
 ```
