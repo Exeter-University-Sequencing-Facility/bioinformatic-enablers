@@ -32,24 +32,26 @@ As you can see with the rawCounts there is a column corresponsind to ENSEMBL gen
 
 Now we have our raw data but we need to ensure that it is in the right format for Deseq2. Deseq2 is a method to detect differentially expressed genes it uses various algorithms to calculate it and it takes into consideration the sequencing depths. [Here](http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#standard-workflow) is a link with an example satndard workflow for Deseq2. For Deseq2 the rows much be gene names and the columns must be sample names. It is important to ensure that for Deseq2  that the sample names do not start with numbers.
 
+The gene ids were extracted and assigned to the variable called geneID.
 ```
 #extract the gene symbol from the raw read counts we imported.
 geneID <- rawCounts$Gene.ID
 head(geneID)
 ```
 
-This creates a boonlean table of columns that start with SRR which are our sample names.
+Now we are extracting the sample names, not their content just their names by using the command ```grepl``` that find matching patterns.
+
 ```
 sampleIndex <- grepl("SRR\\d+", colnames(rawCounts))
 #Sanity check
 head(sampleIndex)
 ```
-creates a matrix that is a type of data with the columns matching sampleIndex=TRUE
+Once we have checked we now create a matrix extracting the columns corresponding to the sampleIndex.
 ```
 rawCounts <- as.matrix(rawCounts[,sampleIndex])
 head(rawCounts)
 ```
-assigns the ENSEMBL id as the rownames of the data.
+We are almost done we now generate rownames for our new table using the geneIDs.
 ```
 rownames(rawCounts) <- geneID
 head(rawCounts)
@@ -59,27 +61,27 @@ Now your data RAW counts are ready for Deseq2.We can use the SampleData variable
 ```
 head(sampleData)
 ```
-You can see from the SampleData that the Run columns corresponds to the sample name. What we want are the columns Run,Sample.Characteristic.biopsy.site. and Sample.Characteristic.individual.. In this particular example we are going to use both the biopsy site and the patient details. In theory depending on what you are looking for you could just use the biopsy type but by including the Sample.Characteristic.individual. you can use this information for other experiments when there might be a batch effect going on.
+You can see from the SampleData that the Run columns corresponds to the sample name. What we want are the columns Run,Sample.Characteristic.biopsy.site. and Sample.Characteristic.individual. In this particular example we are going to use both the biopsy site and the patient details. In theory depending on what you are looking for you could just use the biopsy type but by including the Sample.Characteristic.individual. you can use this information for other experiments when there might be a batch effect going on.
 
 The code below will create the sample names as rownames.
 ```
 rownames(sampleData) <- sampleData$Run
 
 ```
-This creates a table with the columns that we want such as Sample.Characteristic.biopsy.site.", "Sample.Characteristic.individual.
+Now we are trying to retaain the columns that we want such as Sample.Characteristic.biopsy.site.", "Sample.Characteristic.individual.
 ```
  keep <-c("Sample.Characteristic.biopsy.site.","Sample.Characteristic.individual.")
 ```
-
+We are now adding those two columns to the sampleData.
 ```
 sampleData <- sampleData[,keep]
 ```
-Perfect now we are a table with all the information we need. A few more touches that need to be done are to rename the column names as tissueType adn IndividualId so that they are more informative for our benefits.
+Perfect now we have a table with all the information we need. A few more touches that need to be done are to rename the column names as tissueType adn IndividualId so that they are more informative for our benefits.
 ```
 colnames(sampleData) <- c("tissueType", "individualID")
 head(sampleData)
 ```
-We turned the IndividualsID and the Tissue into factors. Factors is a data structure used to for the storage of categorical data. Which is required for Deseq2.
+We turned the IndividualID and the Tissuetype into factors. Factors is a data structure used to for the storage of categorical data. Which is required for Deseq2.
 ```
 sampleData$individualID <- factor(sampleData$individualID)
 sampleData$tissueType <- factor(sampleData$tissueType)
@@ -90,8 +92,8 @@ This checks that the column names of the rawCounts match with the rownames of th
 ```
 all(colnames(rawCounts) == rownames(sampleData))
 ```
-rename the tissue types
-this is  created a function called rename_tissue that thanks in x and changes words such as normal-looking surrounding colonic epithelium to normal and maks it easier for us to deal with.  
+Now we plan to rename the tissue types
+by creating a function called rename_tissue that takes in x and changes words such as normal into normal_looking_surrounding_colonic_epithelium and the description has more information. It is also important to not have spaces in names.
 ```
 rename_tissues <- function(x){
   x <- switch(as.character(x), "normal"="normal_looking_surrounding_colonic_epithelium", "primary tumor"="primary_colorectal_cancer",  "colorectal cancer metastatic in the liver"="metastatic_colorectal_cancer_to_the_liver")
@@ -104,11 +106,11 @@ Order the tissue types so that it is sensible and make sure the control sample i
 ```
 sampleData$tissueType <- factor(sampleData$tissueType, levels=c("normal_looking_surrounding_colonic_epithelium", "primary_colorectal_cancer", "metastatic_colorectal_cancer_to_the_liver"))
 ```
-Create the DEseq2DataSet object
+Once that is sorted we create the DEseq2DataSet object
 ```
 deseq2Data <- DESeqDataSetFromMatrix(countData=rawCounts, colData=sampleData, design= ~ individualID + tissueType)
 ```
-Sanity check to understand the number of rows.
+Now we are doing a sanity check to check the number of rows.
 ```
 dim(deseq2Data)
 
