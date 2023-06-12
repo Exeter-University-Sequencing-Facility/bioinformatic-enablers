@@ -21,12 +21,12 @@ na_omited_sorted_result_primary_vs_normal<-na.omit(sorted_result_primary_vs_norm
 dim(na_omited_sorted_result_primary_vs_normal) #check demensions
 dim(sorted_result_primary_vs_normal) #check demensions
 
-original_gene_list <-na_omited_sorted_result_primary_vs_normal$`round(desc(log2FoldChange))` # just using the rounded log2foldchanges so that it is still descending lclusterprofiler doesn't like it if it is not in a descending value.
+original_gene_list <-na_omited_sorted_result_primary_vs_normal$`round(desc(log2FoldChange))` # just using the rounded log2foldchanges so that it is still descending clusterprofiler doesn't like it if it is not in a descending value.
 original_gene_list<-(-original_gene_list) #change the negative signs to positive and vice-versa.
 names(original_gene_list) <-na_omited_sorted_result_primary_vs_normal$genes
 head(original_gene_list)
 ```
-
+If we look at the original_gene_list we should see it list of genes with its rounded log fold change. For the next step we are going to use the org.Hs.eg.db. That is a complex R object that contains genome wide annotation for humans. For very well annotated and model organisms there should be libraries like these that can you install and use such as org.Dm.eg.db. 
 ```
 library(org.Hs.eg.db)
 gbp <- gseGO(original_gene_list, minGSSize = 10, maxGSSize = 500, pvalueCutoff = 0.25, pAdjustMethod = "BH", OrgDb=org.Hs.eg.db,seed = 123,ont="BP",keyType= 'ENSEMBL')

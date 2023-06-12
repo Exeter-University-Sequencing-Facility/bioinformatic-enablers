@@ -11,7 +11,7 @@ adapted: true
 
 For this practical we will start with raw unnormalised matrix counts. You can seek advice from us or others regarding the on the aligning of transcripts and the quantification of them. The quantification data required to run differential expression analysis using DEseq2 are raw readcounts for either genes or transcripts. We will use the output from HTseq as a starting point.
 
-We will begin by downloading the starting the data and assigning it to a variable.Variables are objects in R that have values and in this course we will create many variables with objects such as characters or even matrices. You can create your own varibles just make sure that they don't start with a number and that they are informative.We reccomnd it is best to copy the code as you would learn and understand it better if you take the time to type it out.
+We will begin by downloading the starting the data and assigning it to a variable. Variables are objects in R that have values and in this course we will create many variables with objects such as characters or even matrices. You can create your own variables just make sure that they don't start with a number and that they are informative. We recommend it is best to not copy the code as you would learn and understand it better if you take the time to type it out.
 
 ```
 rawCounts <- read.delim("http://genomedata.org/gen-viz-workshop/intro_to_deseq2/tutorial/E-GEOD-50760-raw-counts.tsv")
