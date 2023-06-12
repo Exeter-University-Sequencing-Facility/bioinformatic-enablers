@@ -9,7 +9,7 @@ adapted: true
 ---
 ## Preparation for the data
 
-For this practical we will start with raw unnormalised matrix counts. You can seek advice from us or others regarding the on the aligning of transcripts and the quantification of them. The quantification data required to run differential expression analysis using DEseq2 are raw readcounts for either genes or transcripts. We will use the output from HTseq as a starting point.
+For this practical we will start with raw unnormalised matrix counts. You can seek advice from us or others regarding the alignment of transcripts and the quantification of them. The quantification data required to run differential expression analysis using DEseq2 are raw readcounts for either genes or transcripts. We will use the output from HTseq as a starting point.
 
 We will begin by downloading the starting the data and assigning it to a variable. Variables are objects in R that have values and in this course we will create many variables with objects such as characters or even matrices. You can create your own variables just make sure that they don't start with a number and that they are informative. We recommend it is best to not copy the code as you would learn and understand it better if you take the time to type it out.
 
@@ -27,7 +27,7 @@ Throughout this tutorial we will use the command ```head``` that displays the fi
 head(rawCounts)
 head(sampleData)
 ```
-As you can see with the rawCounts there is a column corresponsind to ENSEMBL gene names another one corresponding to gene symbols while the rest are of the columns are the sample names. For the sample Data we have a lot of information regarding links and the type of tissue in this exercise we are interested in just a few columns. It is important to ensure that we extract the needed information.
+As you can see with the rawCounts there is a column corresponding to ENSEMBL gene names another one corresponding to gene symbols while the rest are of the columns are the sample names. For the sample Data we have a lot of information regarding links and the type of tissue in this exercise we are interested in just a few columns. It is important to ensure that we extract the needed information.
 
 
 Now we have our raw data but we need to ensure that it is in the right format for Deseq2. Deseq2 is a method to detect differentially expressed genes it uses various algorithms to calculate it and it takes into consideration the sequencing depths. [Here](http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#standard-workflow) is a link with an example satndard workflow for Deseq2. For Deseq2 the rows much be gene names and the columns must be sample names. It is important to ensure that for Deseq2  that the sample names do not start with numbers.
