@@ -23,9 +23,9 @@ There is another method called 'regularized log' transformation to tranform the 
 
 <details>
            <summary>Could you try and perform the same steps but with regularized log transformation instead of using variance stabilisation transformation technique. </summary>
-           <p>```rlogd = rlog(deseq2Data, blind = FALSE)
+           <p>``` rlogd = rlog(deseq2Data, blind = FALSE)
            plotPCA(rlogd, intgroup = c("tissueType"))#plot the PCA with the jus the tissue type
-           plotPCA(rlogd, intgroup = c("individualID"))#plot the pca with just the individualID``` </p>
+           plotPCA(rlogd, intgroup = c("individualID"))#plot the pca with just the individualID ``` </p>
 </details>
 
 
@@ -80,7 +80,7 @@ pheatmap(
 
 <details>
            <summary>Can you try and figure out how to remove the sample name at the bottom? </summary>
-           <p>```show_colnames=FALSE```</p>
+           <p>``` show_colnames=FALSE ```</p>
 </details>
 
 <details>
