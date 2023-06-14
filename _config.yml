@@ -2,7 +2,7 @@
 title: Bioinformatic Enablers
 short_name: bioinformatic-enablers
 developers: [Paul O'Neill; Jemima Onime]
-description: Set of tools and techniques to enable efficient bioinformatic analysis.
+description: A brief course on bioinformatic analysis.
 n_sessions: 3
 prereq: NA
 url: https://exeter-university-sequencing-facility.github.io/bioinformatic-enablers

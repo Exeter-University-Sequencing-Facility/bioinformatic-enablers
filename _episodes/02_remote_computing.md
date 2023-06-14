@@ -4,7 +4,7 @@ title: How to connect to a remote computer
 order: 2
 session: 1
 length: 20
-toc: true
+toc: false
 ---
 
 ## Remote Computing
@@ -13,7 +13,7 @@ Bioinformatic analysis can require huge amounts of computational resource. It is
 
 For this reason, we usually connect to a larger server (or cluster of servers) in the University's data-centre, or possibly in the cloud.
 
-Data and applications are stored and processed on remote servers. Users can access these resources and perform tasks remotely using various devices, such as computers, smartphones, or tablets, via an internet connection. 
+Data and applications are stored and processed on remote servers. Users can access these resources and perform tasks remotely using various devices, such as computers, smartphones, or tablets, via an internet connection.
 
 ## Command line interface
 
@@ -34,35 +34,27 @@ We will connect using ssh (Secure SHell) On a Mac you can use this from the term
 
 ### PuTTy
 
-[PuTTy](https://www.putty.org/) used to be the go to option and is still very popular. I can neither recommend nor ignore it!
-
-
+[PuTTy](https://www.putty.org/) used to be the 'go-to' option and is still very popular. I can neither recommend nor ignore it!
 
 ## Local command line options
 
-### Windows \*
+### Windows
+
 Computers with Windows operating systems do not automatically have a Unix Shell program
 installed.
 
-In this lesson, we encourage you to use an emulator included in [Git for Windows][install_shell],
-which gives you access to both Bash shell commands and Git. 
-Once installed, you can open a terminal by running the program Git Bash from the Windows start
-menu.
+### MacOS
 
-**For advanced users**, as an alternative to Git for Windows, you may wish to [Install the Windows Subsystem for Linux][wsl] which gives access to a Bash shell command-line tool in Windows 10.
-Please note that commands in the Windows Subsystem for Linux (WSL) may differ slightly
-from those shown in the lesson or presented in the workshop.
-
-### MacOS \*
 For a Mac computer running macOS Mojave or earlier releases, the default Unix Shell is Bash.
 For a Mac computer running macOS Catalina or later releases, the default Unix Shell is Zsh.
 Your default shell is available via the Terminal program within your Utilities folder.
 
 To open Terminal, try one or both of the following:
+
 * In Finder, select the Go menu, then select Utilities.
   Locate Terminal in the Utilities folder and open it.
 * Use the Mac 'Spotlight' computer search function.
-  Search for: `Terminal` and press <kbd>Return</kbd>.
+  Search for: `Terminal` and press Return>.
 
 To check if your machine is set up to use something other than Bash,
 type `echo $SHELL` in your terminal window.
@@ -72,12 +64,8 @@ you can run it by opening a terminal and typing `bash`.
 
 Here are instruction on [how to Use Terminal on a Mac](http://www.macworld.co.uk/feature/mac-software/how-use-terminal-on-mac-3608274/)
 
-
-
-
 ## Example
 
 See this page from the RSE workshop with more details on [Connecting to ISCA](https://uniexeterrse.github.io/intro-to-isca/03_connection/index.html)
 
-
-\* material sourced from RSE pages https://uniexeterrse.github.io/intro-unix-shell/setup.html
+\* material sourced from [RSE pages](https://uniexeterrse.github.io/intro-unix-shell/setup.html)
