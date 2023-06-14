@@ -5,19 +5,26 @@ title: Course Information
 
 ## Overview
 
-In this Workshop we will look at seceral aspects of Genomics, quite briefly. This is meant to be an introduction and a roadmap to future learning.
+You'll likely be eager to begin running your bioinformatic programs and pipelines, and perhaps even developing your own programs and scripts. However, there will be several challenges to tackle before you can effectively and efficiently utilize the computational environment. This course (or reference) aims to serve as a guide or roadmap, supporting you in code management, data handling, resource utilization, and the efficient execution of bioinformatics tasks.
 
-Genomic resequencing involves sequencing an individual's genome and comparing it to a reference genome to identify genetic variations. These variants, can range from single-nucleotide polymorphisms (SNPs) to larger structural variations, and they play a crucial role in understanding bioology, disease and evolutionary processes.
-
-RNA-seq is a powerful technique that allows for the comprehensive analysis of the transcriptome, providing insights into gene expression and regulation. We will be identifying differentially expressed genes.....
-
+This course is not intended to add original material, but rather incorporates material from various sources, including the excellent University of Exeter Research Software Engineering Group's resources, available at their [hompage](https://uniexeterrse.github.io/workshop-homepage).
 
 ## Objectives
 
 This course will covering the following:
 
-- Identification of SNP/Indels from a Genomic Resequencing Experiment
-- Identification of differentially expressed genes from an RNA-seq dataset
+- How to connect to a remote computer.
+- Understand and use the Operating System and Shell.
+- Editing Files.
+- Copying files.
+- Compression.
+- Programming Languages.
+- Versioning.
+
+### UoE specifics
+
+- ISCA (HPC)
+- Data Storage
 
 ## Pre-requisite knowledge
 
@@ -25,7 +32,7 @@ There are no special pre-requisites for this, rather, elements of this course wi
 
 ## Workshop format
 
-The course is designed to be followed online or in a workshop
+This is an online course (and reference)
 
 ## Feedback
 
