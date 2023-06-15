@@ -30,16 +30,16 @@ e.g.
 
 [MobaXterm](https://mobaxterm.mobatek.net/documentation.html#1_2)  
 
-![mobax](../images/setup-01.png)
+![mobax](images/setup-01.png)
 
 ### Termius
 
 [host setup in termius](https://support.termius.com/hc/en-us/articles/4401863615641-Hosts)  
 
-![termius](../images/setup-02.png)
+![termius](images/setup-02.png)
 
 ### WinSCP
 
 [host setup in winscp](https://winscp.net/eng/docs/guide_connect)
 
-![winscp](../images/setup-03.png)
+![winscp](images/setup-03.png)
