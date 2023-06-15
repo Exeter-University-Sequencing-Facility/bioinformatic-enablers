@@ -1,7 +1,7 @@
 # Basic options
 title: Bioinformatic Enablers
 short_name: bioinformatic-enablers
-developers: [Paul O'Neill; Jemima Onime]
+developers: [Jemima Onime, Paul O'Neill]
 description: A brief course on bioinformatic analysis.
 n_sessions: 3
 prereq: NA
