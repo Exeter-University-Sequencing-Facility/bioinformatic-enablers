@@ -23,6 +23,7 @@ You need to know :
 - the full network name - it is `login.isca.ex.ac.uk`  put this wherever the program asks you for 'server', 'address', 'host', or 'remote computer'  
 - Your username is your university short name
 - And your password is your usual password
+- If you are working offsite you will need to be connected the the VPN
 
 e.g.
 
