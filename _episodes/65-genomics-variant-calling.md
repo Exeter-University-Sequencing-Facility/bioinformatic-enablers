@@ -11,24 +11,33 @@ toc: true
 
 Remember we are following the Broad Institute's best practice for [Variant Calling](https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-)
 
-## Preparing the BAM file.
+## Preparing the BAM file
 
 There are a few steps that 'should be' performed before calling variants.
-- Mark Duplicates 
+
+- Mark Duplicates
 - Left Align Indels
-- Recalibrate QScores 
+- Recalibrate QScores
 
 ### Mark Duplicates
 
 During the preparation for the sample (library preparation) and the sequence itself, duplication of molecules may occur. This process finds such duplicates in the BAM file and marks them as such. Later steps in can then use this information to give the read less weight than a unique molecule when identifying variants.
 
+If necessary
+
+```{bash}
+srun  --export=ALL -D . -p bioseq  --time=12:00:00 -A Research_Project-BioTraining --nodes=1  --ntasks-per-node=8 --pty bash -i
+```
+
 First, activate the Conda environment that we need.
+
 ```
 . "/gpfs/ts0/shared/software/Miniconda3/4.9.2/etc/profile.d/conda.sh"
 conda activate /lustre/projects/Research_Project-BioTraining/ecr2023/bioconda-envs/gatk4
 ```
 
 Run the gatk module `MarkDuplicates`
+
 ```
 input_folder=31_bwa_aligned
 output_folder=32_mark_duplicates
@@ -43,18 +52,20 @@ gatk MarkDuplicates \
 
 ### Left Align Indels
 
-This is strictly not necessary as latter steps have this build in. I have left 
+This is strictly not necessary as latter steps have this build in. I have left
 
 This is the process of ensuring that alignments with more than one possible solution are treated consistently. I will explain with an example.
 
-If your reference sequence is GACACACACG
+If xyour reference sequence is GACACACACG
 and the sequence in your sample is GACACACG, then there are several equally valid alignments
 
-GACACACACG
+```{txt}
+GACACACACG  
 G--ACACACG
 
 GACACACACG
 GACACAC--G
+```
 
 etc.
 
@@ -88,8 +99,6 @@ After aligment it is possible to refine this estimate based on real error rates.
 
 To perform this simply a database of expected SNP is required.
 We will skip this step. More details [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035890531)
-
-
 
 ### Now the loop for the rest of the sample
 
@@ -164,7 +173,6 @@ gatk HaplotypeCaller \
 done < samples.txt
 ```
 
-
 ## Joint Variant Calling
 
 ```
@@ -219,8 +227,8 @@ tabix genomic.sorted.gff.gz
 ls -latr
 ```
 
-
 ### Coverage by Gene
+
 ```
 mkdir -p 37_coverage_by_gene
 reference_gff=ncbi_dataset/data/GCF_000011545.1/genomic.gff
@@ -238,12 +246,14 @@ while read sample; do
 done < samples.txt
 ```
 
-##' fish out incomplete genes'
+## ' fish out incomplete genes'
+
 ```
 for x in *.bed; do echo $x; perl -F"\t" -alne 'print $_ if $F[12].to_f < 1.0' $x; done
 ```
 
 ### Annotate SNPs
+
 ```
 input_folder=34_call_haplotypes
 l bedtools intersect -loj  -a ${input_folder}/genotyped_samples.vcf -b <( grep -P "\tCDS\t"  ${reference_gff}) > ${input_folder}/genotyped_samples.annotated.vcf
