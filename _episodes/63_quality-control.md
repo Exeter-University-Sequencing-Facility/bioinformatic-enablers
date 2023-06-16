@@ -26,9 +26,17 @@ conda activate /lustre/projects/Research_Project-BioTraining/ecr2023/bioconda-en
 ## Initial Quick QC of your data
 
 ### Now run FastQC and MultiQC to determine trimming parameters
+
+
+We are going to use bash variables a lot - ask an instructor if you don't understand.
+
 ```
-QC_FOLDER=09_QC_Reports
-mkdir -p  ${QC_FOLDER}/fastqc1
+QC_FOLDER=09_QC_Reports     # assigns a string "09_QC_Reports" to the variable QC_FOLDER
+echo ${QC_FOLDER}           # wherever we use ${QC_FOLDER} it will be replaced by 09_QC_Reports
+```
+
+```
+mkdir -p ${QC_FOLDER}/fastqc1
 fastqc --threads 10 --outdir ${QC_FOLDER}/fastqc1 01_raw_reads/*.fq.gz
 multiqc --filename initial_multiqc.html --outdir=${QC_FOLDER} .
 ```

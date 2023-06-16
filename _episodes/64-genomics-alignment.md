@@ -10,25 +10,24 @@ toc: true
 ## Genomic Alignment
 
 Here we will use a program called [BWA](https://github.com/lh3/bwa) to align your reads against the reference genome.  
-The program will examine each read in turn and work out from which part of the genome it originates. 
+The program will examine each read in turn and work out from which part of the genome it originates.
 
 The result is a file called a 'Sequence Alignment Map' or SAM file. More frequenctly a Binary (BAM) version is used see the [wiki page](https://en.wikipedia.org/wiki/SAM_(file_format)) for details of the format.
 
-
-
-```
-srun  --export=ALL -D . -p bioseq  --time=12:00:00 -A Research_Project-BioTraining --nodes=1  --ntasks-per-node=8 --pty bash -i
-```
-
-Make sure you are in the correct folder
+Make sure you are in a compute node and not the login node.
+Make sure you are in the correct folder.
 ```
 cd /lustre/projects/Research_Project-BioTraining/ecr2023/${USER}
 ```
+
+Activate the bwa conda environment
 
 ```
 . "/gpfs/ts0/shared/software/Miniconda3/4.9.2/etc/profile.d/conda.sh"
 conda activate /lustre/projects/Research_Project-BioTraining/ecr2023/bioconda-envs/bwa
 ```
+
+Set up some variables.
 
 ```
 sample=wildtype
@@ -41,12 +40,12 @@ mkdir -p ${output_folder}
 
 ```
 time bwa mem \
-    -t 8 \
+    -t 16 \
     -R "@RG\tID:${sample}\tSM:${sample}\tLB:l1\tPL:ILLUMINA\tDS:MiSeq" \
     ${reference_fasta} \
     ${input_folder}/${sample}_R1_fastp.fastq.gz \
     ${input_folder}/${sample}_R2_fastp.fastq.gz > \
-    ${output_folder}/${sample}_temp.sam \
+    ${output_folder}/${sample}_temp.sam
 ```
 
 ### Quick check
@@ -89,13 +88,20 @@ qualimap bamqc \
     -outdir ${qualimap_folder}/${sample}
 ```
 
+In winscp download the whole qualimap folder before viewing the html report.  
+In particular we are looking for 
+
+- the alignment rate (what explanation for a low aligment rate? )
+- coverage across genome
+
+
 
 ## Now execute in a loop
 ```
 while read sample; do 
     echo $sample
     bwa mem \
-        -t 8 \
+        -t 16 \
         -R "@RG\tID:${sample}\tSM:${sample}\tLB:l1\tPL:ILLUMINA\tDS:MiSeq" \
         ${reference_fasta} \
         ${input_folder}/${sample}_R1_fastp.fastq.gz \
@@ -105,8 +111,9 @@ while read sample; do
     samtools view -bSh \
         ${output_folder}/${sample}_temp.sam > \
         ${output_folder}/${sample}_temp.bam 
+
     samtools sort ${output_folder}/${sample}_temp.bam  \
-        --threads 8 \
+        --threads 16 \
         -T ${output_folder}/${sample}_unsorted.bam  \
         -o ${output_folder}/${sample}_sorted.bam
     samtools flagstat ${output_folder}/${sample}_sorted.bam > ${output_folder}/${sample}_aligment_stats.txt
@@ -118,12 +125,15 @@ while read sample; do
 done < samples.txt
 ```
 
-
-
-
 Run multiqc again - changing the output filename and have a look at the results.
+
+```
+conda activate /lustre/projects/Research_Project-BioTraining/ecr2023/bioconda-envs/sequencing_qc
+multiqc --filename after_align_multiqc.html --outdir=${QC_FOLDER} .
+```
+
+You can see that some qualimap plots have been added to the multiqc report, making it easy to compare accross samples.
 
 ## Summary
 
 We now have aligned and sorted files for ongoing analysis.
-
