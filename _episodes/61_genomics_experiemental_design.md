@@ -25,9 +25,10 @@ In our experiment we only have 5 samples.
 - reverted mutant 2
 - reverted mutant 3
 
-Our goal is the idnetify the genetic differences in the 5 isolates - needs to be more explicit.
+Our goal is the identify the genetic differences in the 5 isolates.
 
 The approach we will take is described in the Broad Institutes Best Practices
 [Germline short variant discovery](
 https://gatk.broadinstitute.org/hc/en-us/articles/360035535932-Germline-short-variant-discovery-SNPs-Indels-)
 
+Have a brief read and let's get started with the material - click 'next episode below'.

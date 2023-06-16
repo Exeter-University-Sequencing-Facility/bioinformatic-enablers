@@ -7,37 +7,46 @@ length: 10
 toc: true
 ---
 
-## Initial Quick QC of your data
+## Preparation
 
-Get an interactive session - this time we will request 5 cpu - one per sample:
-```
-srun  --export=ALL -D . -p bioseq  --time=12:00:00 -A Research_Project-BioTraining --nodes=1  --ntasks-per-node=5 --pty bash -i
-```
+Make sure you are on a compute node.
 
-Make sure you are in the correct folder
+And you are in the correct folder
 ```
 cd /lustre/projects/Research_Project-BioTraining/ecr2023/${USER}
 ```
+
+Activate the sequencing_qc environment that contains the tools we need.
 
 ```
 . "/gpfs/ts0/shared/software/Miniconda3/4.9.2/etc/profile.d/conda.sh"
 conda activate /lustre/projects/Research_Project-BioTraining/ecr2023/bioconda-envs/sequencing_qc
 ```
 
+## Initial Quick QC of your data
 
-### Now run FastQC to determine trimming parameters
+### Now run FastQC and MultiQC to determine trimming parameters
 ```
 QC_FOLDER=09_QC_Reports
 mkdir -p  ${QC_FOLDER}/fastqc1
-fastqc --threads 5 --outdir ${QC_FOLDER}/fastqc1 01_raw_reads/*.fq.gz
+fastqc --threads 10 --outdir ${QC_FOLDER}/fastqc1 01_raw_reads/*.fq.gz
 multiqc --filename initial_multiqc.html --outdir=${QC_FOLDER} .
 ```
 
-Examime the multiqc report and the (individual reports if you wish)
+Use WinSCP to examine the multiqc report and the (individual fastqc reports if you wish)  
+hint: use `pwd` to get your current folder and paste it into the address bar of winscp.
 
-We want to trim illumina adapters and low quality reads from the 3' end of the sequences. Since these are 250bp reads the quality does drop towards the end.
+We want to trim illumina sequencing adapters and low quality reads from the 3' end of the sequences. We will then discard any reads that are shorter than a certain length.
 
-In this dataset, it is not too critical we can choose 100 for the miniumum lenght to keep and 22 as the qscore to trim.
+The key things to think about:
+
+- adapter content
+- read qc profile
+- decide on canditate settings for required_length and qscore.
+- consider the data-set and how much data you will be losing
+
+
+In this dataset, the quality is good and it is not too critical we can choose 100 for the miniumum length, and 22 as the qscore to trim.
 
 ```
 QC_FOLDER=09_QC_Reports
@@ -54,7 +63,7 @@ fastp \
     --cut_tail \
     --cut_tail_mean_quality=${qscore} \
     --length_required=${length_required} \
-    --thread=5 \
+    --thread=16 \
     --in1=${input_folder}/${sample}_r1.fq.gz \
     --in2=${input_folder}/${sample}_r2.fq.gz \
     --out1=${output_folder}/${sample}_R1_fastp_fastq.gz \
@@ -82,7 +91,7 @@ while read sample; do
         --cut_tail \
         --cut_tail_mean_quality=${qscore} \
         --length_required=${length_required} \
-        --thread=5 \
+        --thread=16 \
         --in1=${input_folder}/${sample}_r1.fq.gz \
         --in2=${input_folder}/${sample}_r2.fq.gz \
         --out1=${output_folder}/${sample}_R1_fastp.fastq.gz \
@@ -109,13 +118,13 @@ This does not mean you have lost nearly a quarter of your data!
 ```
 QC_FOLDER=09_QC_Reports
 mkdir -p  ${QC_FOLDER}/fastqc2
-fastqc --threads 5 --outdir ${QC_FOLDER}/fastqc2 11_trimmed_reads/*.fastq.gz
+fastqc --threads 10 --outdir ${QC_FOLDER}/fastqc2 11_trimmed_reads/*.fastq.gz
 multiqc --filename after_trim_multiqc.html --outdir=${QC_FOLDER} .
 ```
 
 ## Review
 
-Review the multiQC reports (and the individual reports if you wish)
+Review the multiQC report (and the individual reports if you wish)
 You are looking for:
 
 - effective, but appropriate level of trimming.
@@ -125,6 +134,3 @@ You are looking for:
 ## Summary
 
 You have now removed artificial (adapter) sequences and low quality nbases from your data set. All your data now should be valid biological sequences and you are ready to proceed with analysis.
-
-
-- 
