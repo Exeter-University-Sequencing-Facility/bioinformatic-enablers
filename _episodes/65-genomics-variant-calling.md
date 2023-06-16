@@ -169,6 +169,7 @@ gatk HaplotypeCaller \
     --output=${output_folder}/${sample}_g.vcf \
     --emit-ref-confidence GVCF \
     --sample-ploidy ${ploidy} \
+    --bam-output=${output_folder}/${sample}_hc.bam \
     --native-pair-hmm-threads 8
 done < samples.txt
 ```
