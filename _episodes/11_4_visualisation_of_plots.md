@@ -79,7 +79,7 @@ filtering_results <- function(res_file,padj_value,log2foldchange_value){
 ```
 Why would you filter in this manner rather than using the deseq2 results function? That is an extremely good question. The thing is that is you set a p-value cutoff in the results part it does not filter out those genes it keeps them there but with a NA value for the p-value.
 
-#so to just visualise the pheat map we chose a log2fold change of 2 and pajusted value of 0.05. We then extract the rows corresponsind to that filterinf from the vsd file that contains all the samples but the
+so to just visualise the pheat map we chose a log2fold change of 2 and pajusted value of 0.05. We then extract the rows corresponsind to that filterinf from the vsd file that contains all the samples but the
 
 ```
 filtered_result_primary_vs_normal<-filtering_results(result_primary_vs_normal,0.05,2)
