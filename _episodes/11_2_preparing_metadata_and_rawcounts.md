@@ -13,6 +13,22 @@ For this practical we will start with raw unnormalised matrix counts. You can se
 
 We will begin by downloading the data and assigning it to a variable. Variables are objects in R that have values and in this course we will create many variables with values such as characters or even matrices. You can create your own variables just make sure that they don't start with a number and that they are informative. We recommend it is best to not copy the code as you would learn and understand it better if you take the time to type it out.
 
+Loading some libraries
+```
+library("AnnotationDbi")
+library(dplyr)
+library(ggplot2)
+library("DESeq2")
+library("cowplot")
+library("pheatmap")
+library(tibble)
+library(clusterProfiler)
+library(DOSE)
+library(rtracklayer)
+
+```
+
+
 ```
 rawCounts <- read.delim("http://genomedata.org/gen-viz-workshop/intro_to_deseq2/tutorial/E-GEOD-50760-raw-counts.tsv")
 
