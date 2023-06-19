@@ -21,7 +21,7 @@ on your browser.
 ![r_studio_login](../images/r_stuio_login_page.PNG)
 
 
-You can then log in with your short name username and the password is ungeussable. For example type jeoo201 as your username and unguessable as your password.
+You can then log in with your short name username and the password is unguessable. For example type jeoo201 as your username and unguessable as your password.
 
 
 # Key features of R studio set up
