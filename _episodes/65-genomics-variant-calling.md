@@ -19,22 +19,23 @@ There are a few steps that 'should be' performed before calling variants.
 - Left Align Indels
 - Recalibrate QScores
 
-### Mark Duplicates
 
-During the preparation for the sample (library preparation) and the sequence itself, duplication of molecules may occur. This process finds such duplicates in the BAM file and marks them as such. Later steps in can then use this information to give the read less weight than a unique molecule when identifying variants.
-
-If necessary
-
-```{bash}
-srun  --export=ALL -D . -p bioseq  --time=12:00:00 -A Research_Project-BioTraining --nodes=1  --ntasks-per-node=8 --pty bash -i
+Make sure you are in a compute node and not the login node.
+Make sure you are in the correct folder.
+```
+cd /lustre/projects/Research_Project-BioTraining/ecr2023/${USER}
 ```
 
-First, activate the Conda environment that we need.
+Activate the gatk conda environment
 
 ```
 . "/gpfs/ts0/shared/software/Miniconda3/4.9.2/etc/profile.d/conda.sh"
 conda activate /lustre/projects/Research_Project-BioTraining/ecr2023/bioconda-envs/gatk4
 ```
+
+### Mark Duplicates
+
+During the preparation for the sample (library preparation) and the sequence itself, duplication of molecules may occur. This process finds such duplicates in the BAM file and marks them as such. Later steps in can then use this information to give the read less weight than a unique molecule when identifying variants.
 
 Run the gatk module `MarkDuplicates`
 
@@ -101,10 +102,6 @@ To perform this simply a database of expected SNP is required.
 We will skip this step. More details [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035890531)
 
 ### Now the loop for the rest of the sample
-
-```
-reference_fasta=ncbi_dataset/data/GCF_000011545.1/GCF_000011545.1_ASM1154v1_genomic.fna
-```
 
 ```
 while read sample; do 
