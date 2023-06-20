@@ -136,6 +136,9 @@ It is a 2 step process - first each sample is 'genotyped' - an assessment is mad
 
 Secondly the variants are called from the joint information. This avoid the issue with some pipelines where a variant in  two samples falls just above and just below and arbitary cut-off.
 
+From the GATK documentation.
+*The central tenet that governs the variant discovery part of the workflow is that the accuracy and sensitivity of the germline variant discovery algorithm are significantly increased when it is provided with data from many samples at the same time. Specifically, the variant calling program needs to be able to construct a squared-off matrix of genotypes representing all potentially variant genomic positions, across all samples in the cohort. Note that this is distinct from the primitive approach of combining variant calls generated separately per-sample, which lack information about the confidence of homozygous-reference or other uncalled genotypes.*
+
 ```
 ploidy=1
 input_folder=33_align_indels
