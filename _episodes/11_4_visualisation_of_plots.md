@@ -35,7 +35,7 @@ Now if you remember we used 2 design features Tissuetype and individualID let's 
 ```
 plotPCA(vsd, intgroup = c("individualID"))
 ```
-![picture_pca_indi](../pca_plot_course_individualid.PNG)
+![picture_pca_indi](../images/pca_plot_course_individualid.PNG)
 
 If we remember correctly we have 18 patients and 3 tissues samples were collected from them. At this stage as we are just looking at the PCA plots with the indidualIDs. What we are looking for is a lack of clustering for example if samples from 1 patient all clustered together it might indicate a problem with the sample and thus it might be best to remove that sample from the rawCounts, but in this case there are no individuals just clustering to one side.  
 
